@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index     # 一覧表示
     @books = Book.all
+    @book = Book.new
   end
 
   def edit     # 編集
@@ -11,14 +12,10 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def new     # 新規登録フォーム用
-    @book = Book.new
-  end
-
   def create     # 新規登録用のアクション
     book = Book.new(book_params)
     book.save
-    render '/books/:id'
+    redirect_to book_path(book.id)
   end
 
   def update     # 更新用のアクション
