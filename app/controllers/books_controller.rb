@@ -15,13 +15,25 @@ class BooksController < ApplicationController
   def create     # 新規登録用のアクション
     book = Book.new(book_params)
     book.save
-    redirect_to book_path(book.id)
+    # if
+      flash.now[:notice] = "Book was successfully created."
+      redirect_to book_path(book.id)
+    # else
+    #   flash.now[:alert] = "[Error] Creation Failed."
+    #   render :new
+    # end
   end
 
   def update     # 更新用のアクション
     book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to books_path
+    # if
+      book.update(book_params)
+      flash.now[:notice] = "Book was successfully updated."
+      redirect_to books_path
+    # else
+    #   flash.now[:alert] = "[Error] Update Failed."
+    #   render :edit
+    # end
   end
 
   def destroy     # 削除用のアクション
