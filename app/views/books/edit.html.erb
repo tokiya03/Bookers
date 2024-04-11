@@ -1,6 +1,6 @@
 <h1>Editing Book</h1>
 
-<%= form_with model: @book, url: book_path do |f| %>
+<%= form_with model: @book do |f| %>
   <div class="field">
     <div>Title</div>
     <%= f.text_field :title %>
@@ -13,7 +13,6 @@
   <div class="action">
     <%= f.submit 'Update Book' %>
   </div>
-
 <% end %>
 
 <%= link_to 'Show', book_path(@book.id) %>
